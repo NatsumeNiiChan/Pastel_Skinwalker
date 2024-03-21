@@ -10,20 +10,26 @@ public class RoomChangeManagement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //collision.gameObject.GetComponentInChildren<PolygonCollider2D>().enabled = true;
-        activeRoom = collision.transform.parent.gameObject;
-        //activeRoom.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        activeRoom.GetComponentInChildren<TilemapRenderer>().enabled = true;
+        if (collision.gameObject.tag == "Room")
+        {
+            //collision.gameObject.GetComponentInChildren<PolygonCollider2D>().enabled = true;
+            activeRoom = collision.transform.parent.gameObject;
+            //activeRoom.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            activeRoom.GetComponentInChildren<TilemapRenderer>().enabled = true;
 
-        Invoke("ChangeRoom", 0.5f);
+            Invoke("ChangeRoom", 0.5f);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //collision.gameObject.GetComponentInChildren<PolygonCollider2D>().enabled = false;
+        if (collision.gameObject.tag == "Room")
+        {
+            //collision.gameObject.GetComponentInChildren<PolygonCollider2D>().enabled = false;
 
-        //oldRoom.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        oldRoom.GetComponentInChildren<TilemapRenderer>().enabled = false;
+            //oldRoom.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            oldRoom.GetComponentInChildren<TilemapRenderer>().enabled = false;
+        }
     }
 
     private void ChangeRoom()
