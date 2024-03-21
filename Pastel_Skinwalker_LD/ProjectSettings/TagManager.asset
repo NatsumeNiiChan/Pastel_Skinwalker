@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - "W\xE4sche"
+  - Geschirr
   layers:
   - Default
   - TransparentFX
@@ -43,6 +45,12 @@ TagManager:
     locked: 0
   - name: House
     uniqueID: 2845339083
+    locked: 0
+  - name: Furniture
+    uniqueID: 3239090571
+    locked: 0
+  - name: Objects
+    uniqueID: 2463405253
     locked: 0
   - name: FOW
     uniqueID: 2199414197

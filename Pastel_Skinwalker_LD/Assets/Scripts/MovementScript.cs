@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class MovementScript : MonoBehaviour
 {
@@ -8,9 +10,6 @@ public class MovementScript : MonoBehaviour
     private BoxCollider2D playerCollider;
     private float vertical;
     private float horizontal;
-
-    [SerializeField] private GameObject activeRoom;
-    [SerializeField] private GameObject oldRoom;
 
     [SerializeField] private int movementSpeed = 5;
 
@@ -26,23 +25,5 @@ public class MovementScript : MonoBehaviour
         horizontal = Input.GetAxisRaw("Vertical");
 
         rigidBody.velocity = new Vector2(vertical * movementSpeed, horizontal * movementSpeed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        activeRoom = collision.transform.parent.gameObject;
-        activeRoom.GetComponentInChildren<SpriteRenderer>().enabled = false;
-
-        Invoke("ChangeRoom", 0.5f);
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        oldRoom.GetComponentInChildren<SpriteRenderer>().enabled = true;
-    }
-
-    private void ChangeRoom()
-    {
-        oldRoom = activeRoom;
     }
 }
